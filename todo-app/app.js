@@ -9,6 +9,7 @@ const todoList = document.getElementById('todo-list');
 const emptyState = document.getElementById('empty-state');
 const searchInput = document.getElementById('search-input');
 const filterBtns = document.querySelectorAll('.filter-btn');
+const themeToggleBtn = document.getElementById('theme-toggle');
 
 // Stats Elements
 const completionPercentage = document.getElementById('completion-percentage');
@@ -18,9 +19,36 @@ const completedCount = document.getElementById('completed-count');
 
 // Initialize App
 function init() {
+  loadTheme();
   loadTodos();
   setupEventListeners();
   render();
+}
+
+// Load Theme from LocalStorage
+function loadTheme() {
+  const currentTheme = localStorage.getItem('aura_theme') || 'dark';
+  if (currentTheme === 'light') {
+    document.body.setAttribute('data-theme', 'light');
+    themeToggleBtn.textContent = '☀️';
+  } else {
+    document.body.removeAttribute('data-theme');
+    themeToggleBtn.textContent = '🌙';
+  }
+}
+
+// Toggle Theme
+function toggleTheme() {
+  const isLight = document.body.getAttribute('data-theme') === 'light';
+  if (isLight) {
+    document.body.removeAttribute('data-theme');
+    themeToggleBtn.textContent = '🌙';
+    localStorage.setItem('aura_theme', 'dark');
+  } else {
+    document.body.setAttribute('data-theme', 'light');
+    themeToggleBtn.textContent = '☀️';
+    localStorage.setItem('aura_theme', 'light');
+  }
 }
 
 // Load Todos from LocalStorage
@@ -46,6 +74,9 @@ function saveTodos() {
 
 // Event Listeners Configuration
 function setupEventListeners() {
+  // Theme Toggle Button Click
+  themeToggleBtn.addEventListener('click', toggleTheme);
+
   // Add Todo Form Submit
   todoForm.addEventListener('submit', (e) => {
     e.preventDefault();
