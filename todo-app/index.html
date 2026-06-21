@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AuraTodo — Premium Task Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background decorative meshes -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <main class="app-container">
+    <!-- Header Area -->
+    <header class="app-header">
+      <div class="logo-area">
+        <div class="logo-icon">✨</div>
+        <h1>AuraTodo</h1>
+      </div>
+      <p class="subtitle">Organize your workflow with absolute clarity.</p>
+    </header>
+
+    <!-- Stats & Analytics Grid (Bento Style) -->
+    <section class="stats-grid">
+      <div class="stat-card progress-card">
+        <div class="stat-info">
+          <h3>Task Completion</h3>
+          <p id="completion-percentage">0%</p>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
+        </div>
+      </div>
+      <div class="stat-card count-card">
+        <h3>Active Tasks</h3>
+        <p id="active-count" class="count-value">0</p>
+      </div>
+      <div class="stat-card count-card">
+        <h3>Completed</h3>
+        <p id="completed-count" class="count-value">0</p>
+      </div>
+    </section>
+
+    <!-- Task Controller Area -->
+    <section class="control-panel">
+      <!-- Search & Filters -->
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search tasks...">
+      </div>
+
+      <div class="filters-container">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="pending">Pending</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+      </div>
+    </section>
+
+    <!-- Input Box Area -->
+    <section class="input-section">
+      <form id="todo-form" class="todo-form">
+        <input type="text" id="todo-input" placeholder="What's your next priority?" required maxlength="100">
+        
+        <select id="todo-category" class="category-select">
+          <option value="Work">💻 Work</option>
+          <option value="Personal">🏡 Personal</option>
+          <option value="Coding">⚡ Coding</option>
+          <option value="Shopping">🛒 Shopping</option>
+          <option value="Health">🧘 Health</option>
+        </select>
+        
+        <button type="submit" class="submit-btn">Add Priority</button>
+      </form>
+    </section>
+
+    <!-- Todo List Area -->
+    <section class="list-section">
+      <ul id="todo-list" class="todo-list">
+        <!-- Rendered items will appear here -->
+      </ul>
+      <div id="empty-state" class="empty-state">
+        <div class="empty-icon">📂</div>
+        <p>No priorities set for this filter. Start fresh!</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
